@@ -3,7 +3,7 @@
    Hier kannst du die Optik der ganzen App an einer Stelle ändern.
    ========================================================= */
 :root {
-  --hintergrund: #ffffff;   /* Hintergrund der App */
+  --hintergrund: #cfcfcf;   /* Hintergrund der App */
   --text: #222222;          /* normale Schriftfarbe */
   --grau: #dddddd;          /* kleine Buttons, Rahmen */
   --akzent: #c97b7b;        /* großer runder Button */
