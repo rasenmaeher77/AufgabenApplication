@@ -69,6 +69,7 @@ function aufgabeLoeschen(id) {
    2. ELEMENTE AUS DEM HTML HOLEN
    ========================================================= */
 
+const btnMischa = document.getElementById("btn-mischa");
 const btnNeu = document.getElementById("btn-neu");
 const btnListe = document.getElementById("btn-liste");
 const btnZufall = document.getElementById("btn-zufall");
@@ -81,6 +82,8 @@ const inputNeu = document.getElementById("input-neu");
 const dialogListe = document.getElementById("dialog-liste");
 const liste = document.getElementById("liste");
 const listeLeer = document.getElementById("liste-leer");
+
+const mischaText = document.getElementById("mischa-text");
 
 // Alle Buttons mit dem Attribut "data-schliessen" schließen ihr Fenster
 document.querySelectorAll("[data-schliessen]").forEach((button) => {
@@ -217,3 +220,15 @@ btnZufall.addEventListener("click", async () => {
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js");
 }
+
+/* =========================================================
+   7. BUTTON 4: MISCHA BUTTON
+   ========================================================= */
+
+btnMischa.addEventListener("click", () => {
+  mischaText.classList.add("sichtbar");      // einblenden
+
+  setTimeout(() => {
+    mischaText.classList.remove("sichtbar"); // nach 2 Sekunden ausblenden
+  }, 2000);
+});

@@ -6,7 +6,7 @@
   --hintergrund: #cfcfcf;   /* Hintergrund der App */
   --text: #222222;          /* normale Schriftfarbe */
   --grau: #dddddd;          /* kleine Buttons, Rahmen */
-  --akzent: #c97b7b;        /* großer runder Button */
+  --akzent: #bf2c2c;        /* großer runder Button */
   --akzent-text: #ffffff;   /* Schrift auf dem großen Button */
   --gefahr: #b33a3a;        /* "Löschen"-Button */
 
@@ -208,4 +208,29 @@ dialog input {
 .hinweis {
   color: #888888;
   text-align: center;
+}
+
+.einblendung {
+  width: min(90vw, 400px);
+  max-height: 80vh;
+  border: 2px solid var(--text);
+  border-radius: var(--radius);
+  padding: 20px;
+  background: yellow;
+  color: var(--text);
+  text-align: center;
+  font-size: xx-large;
+
+  position: fixed;
+  top: 50%;                         /* Oberkante liegt auf halber Höhe */
+  left: 50%;                        /* linke Kante liegt auf halber Breite */
+  transform: translate(-50%, -50%); /* verschiebt das Element um die Hälfte seiner eigenen Größe zurück */
+
+  opacity: 0;               /* unsichtbar */
+  pointer-events: none;     /* Klicks gehen "durch" den unsichtbaren Text */
+  transition: opacity 0.4s; /* sanftes Ein-/Ausblenden */
+}
+
+.einblendung.sichtbar {
+  opacity: 1;               /* sichtbar, sobald die Klasse "sichtbar" dran ist */
 }
