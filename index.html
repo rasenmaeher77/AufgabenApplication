@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <!-- viewport-fit=cover: die App nutzt den ganzen iPhone-Bildschirm (inkl. Notch-Bereich) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>AUFGABE</title>
+
+  <!-- Einstellungen, damit die App auf dem iPhone wie eine echte App aussieht -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AUFGABE">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== Kopfzeile mit den beiden kleinen Buttons (Button 1 und 2) ===== -->
+  <header class="topbar">
+    <button id="btn-neu" class="klein-button" aria-label="Aufgabe hinzufügen">+</button>
+    <button id="btn-liste" class="klein-button" aria-label="Aufgabenliste öffnen">☰</button>
+  </header>
+
+  <!-- ===== Hauptbereich mit dem großen runden Button (Button 3) ===== -->
+  <main class="mitte">
+    <p id="ergebnis" class="ergebnis">Drück den Knopf!</p>
+    <button id="btn-zufall" class="gross-button">LOS</button>
+  </main>
+
+  <!-- ===== Fenster 1: neue Aufgabe eingeben ===== -->
+  <dialog id="dialog-neu">
+    <form id="form-neu">
+      <h2>Neue Aufgabe</h2>
+      <input id="input-neu" type="text" placeholder="z. B. heute Abwasch machen" autocomplete="off" required>
+      <div class="zeile">
+        <button type="button" class="text-button" data-schliessen>Abbrechen</button>
+        <button type="submit" class="text-button primaer">Hinzufügen</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- ===== Fenster 2: Liste aller Aufgaben ===== -->
+  <dialog id="dialog-liste">
+    <h2>Alle Aufgaben</h2>
+    <ul id="liste"></ul>
+    <p id="liste-leer" class="hinweis">Noch keine Aufgaben. Füge mit + eine hinzu.</p>
+    <div class="zeile">
+      <button type="button" class="text-button" data-schliessen>Schließen</button>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

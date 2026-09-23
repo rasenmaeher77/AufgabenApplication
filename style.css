@@ -1,0 +1,211 @@
+/* =========================================================
+   FARBEN & GRÖSSEN
+   Hier kannst du die Optik der ganzen App an einer Stelle ändern.
+   ========================================================= */
+:root {
+  --hintergrund: #ffffff;   /* Hintergrund der App */
+  --text: #222222;          /* normale Schriftfarbe */
+  --grau: #dddddd;          /* kleine Buttons, Rahmen */
+  --akzent: #c97b7b;        /* großer runder Button */
+  --akzent-text: #ffffff;   /* Schrift auf dem großen Button */
+  --gefahr: #b33a3a;        /* "Löschen"-Button */
+
+  --gross-button-groesse: 200px; /* Durchmesser des runden Buttons */
+  --radius: 8px;                  /* Rundung der Ecken */
+  --schrift: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* =========================================================
+   GRUNDLAYOUT
+   ========================================================= */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--hintergrund);
+  color: var(--text);
+  font-family: var(--schrift);
+  display: flex;
+  flex-direction: column;
+  /* Abstand zum Notch / zur Home-Leiste des iPhones */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+           env(safe-area-inset-bottom) env(safe-area-inset-left);
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* =========================================================
+   KOPFZEILE: Button 1 (+) und Button 2 (☰)
+   ========================================================= */
+.topbar {
+  display: flex;
+  gap: 10px;
+  padding: 16px;
+}
+
+.klein-button {
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  background: var(--grau);
+  border: 2px solid var(--text);
+  border-radius: var(--radius);
+}
+
+/* =========================================================
+   MITTE: Ergebnis-Text und Button 3 (großer runder Button)
+   ========================================================= */
+.mitte {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 16px;
+  /* etwas nach oben schieben, damit der Button optisch mittig wirkt */
+  margin-bottom: 80px;
+}
+
+.ergebnis {
+  min-height: 3em;          /* reserviert Platz, damit nichts springt */
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  max-width: 320px;
+}
+
+.gross-button {
+  width: var(--gross-button-groesse);
+  height: var(--gross-button-groesse);
+  border-radius: 50%;
+  background: var(--akzent);
+  color: var(--akzent-text);
+  font-size: 32px;
+  font-weight: 700;
+  border: 3px solid var(--text);
+  /* der hellgraue Ring um den Button (wie in der Skizze) */
+  box-shadow: 0 0 0 12px var(--grau), 0 0 0 14px var(--text);
+  transition: transform 0.1s;
+}
+
+.gross-button:active {
+  transform: scale(0.95);
+}
+
+/* kleine Wackel-Animation, wenn eine Aufgabe gezogen wird */
+.wackeln {
+  animation: wackeln 0.4s;
+}
+
+@keyframes wackeln {
+  0%, 100% { transform: rotate(0); }
+  25%      { transform: rotate(-8deg); }
+  75%      { transform: rotate(8deg); }
+}
+
+/* =========================================================
+   FENSTER (Dialoge) für "Neue Aufgabe" und "Alle Aufgaben"
+   ========================================================= */
+dialog {
+  width: min(90vw, 400px);
+  max-height: 80vh;
+  border: 2px solid var(--text);
+  border-radius: var(--radius);
+  padding: 20px;
+  background: var(--hintergrund);
+  color: var(--text);
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+dialog h2 {
+  margin: 0 0 16px;
+  font-size: 20px;
+}
+
+dialog input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;          /* mind. 16px, sonst zoomt das iPhone rein */
+  border: 2px solid var(--grau);
+  border-radius: var(--radius);
+}
+
+.zeile {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.text-button {
+  padding: 8px 14px;
+  background: var(--grau);
+  border: none;
+  border-radius: var(--radius);
+}
+
+.text-button.primaer {
+  background: var(--akzent);
+  color: var(--akzent-text);
+}
+
+.text-button.gefahr {
+  background: var(--gefahr);
+  color: #ffffff;
+}
+
+/* =========================================================
+   LISTE der Aufgaben
+   ========================================================= */
+#liste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  max-height: 55vh;
+}
+
+#liste li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--grau);
+}
+
+#liste li .aufgabe-text {
+  flex: 1;
+  word-break: break-word;
+}
+
+#liste li input {
+  flex: 1;
+}
+
+#liste li .text-button {
+  padding: 6px 10px;
+  font-size: 14px;
+}
+
+.hinweis {
+  color: #888888;
+  text-align: center;
+}
